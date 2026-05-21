@@ -1,3 +1,8 @@
+import mnkImage from "../assets/images/mnk.png";
+import qcImage from "../assets/images/qc.png";
+import erlmImage from "../assets/images/erlm.png";
+import ensoImage from "../assets/images/enso.png";
+
 export const projects = [
   {
     title: "Midnight Koi",
