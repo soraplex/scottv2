@@ -15,7 +15,7 @@ export const projects = [
 
   {
     title: "Quick Chat",
-    imageUrl: "src/assets/images/qc.png",
+    imageUrl: qcImage,
     description: "A blog that allows you to interact and talk with users in real-time.",
     tags: ["JavaScript", "MicroblogLite API", "Node.js", "HTML", "CSS"],
     github: "https://github.com/soraplex/quickchat",
@@ -24,7 +24,7 @@ export const projects = [
 
   {
     title: "Earths Realm",
-    imageUrl: "src/assets/images/erlm.png",
+    imageUrl: erlmImage,
     description: "A website that shows users parks & recreation all across America.",
     tags: ["JavaScript", "Sunrise API", "HTML", "CSS"],
     github: "https://github.com/soraplex/earths-realm",
@@ -32,7 +32,7 @@ export const projects = [
   },
   {
     title: "Enso",
-    imageUrl: "src/assets/images/enso.png",
+    imageUrl: ensoImage,
     description: "Discord bot that sends positive affirmations to users.",
     tags: ["Discord.js", "JavaScript", "Node.js", "Discord API", "AWS"],
     github: "https://github.com/soraplex/Enso",
