@@ -1,36 +1,24 @@
-# React + Vite
+# 🌐 Personal Portfolio — Built with Vite + React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Welcome to my personal portfolio! This site highlights my work, skills, and creative approach to web development. Built with [Vite](https://vitejs.dev/) for lightning-fast performance and [React](https://reactjs.org/) for dynamic, interactive UIs, it blends technical precision with aesthetic intent.
 
 
-<!-- > 🔒 Proprietary — Viewing allowed, reuse prohibited.
+<!-- ## 🚀 Live Site
 
-## License & Usage Notice
 
-This project is the original work of [Your Name].  
-The code in this repository is provided for **portfolio review purposes only**.
+[Visit My Portfolio](https://scottydotcom.netlify.app/)  
 
-### ❌ Not permitted
-- Reuse or copying of any code
-- Modification, redistribution, or adaptation
-- Use in personal, academic, or commercial projects
-- Incorporation into other repositories or codebases
-- Training AI models or automated systems using this code
 
-### ✔ Permitted
-- Viewing the code for hiring and evaluation
+## 🛠️ Tech Stack
 
-If you have questions about usage or permissions, please contact me directly. -->
+- **Framework**: [React](https://reactjs.org/) — JavaScript UI library for building interactive components
+
+- **Language**: [JavaScript](https://www.javascript.com/) — Core programming language
+
+- **Bundler**: [Vite](https://vitejs.dev/) — A fast build tool and development server 
+
+- **Styling**: [CSS](https://www.w3.org/Style/CSS/) — Custom styles for layout and design
+
+- **Deployment**: [Netlify](https://www.netlify.com/) — Hosting and continuous deployment
+
+- **Source Control**: [Git](https://git-scm.com/) + [GitHub](https://github.com/) — Code tracking and collaboration -->
