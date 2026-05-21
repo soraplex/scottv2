@@ -6,7 +6,7 @@ import ensoImage from "../assets/images/enso.png";
 export const projects = [
   {
     title: "Midnight Koi",
-    imageUrl: "src/assets/images/mnk.png",
+    imageUrl: mnkImage,
     description: "Personal vscode theme designed to enhance coding focus visually.",
     tags: ["Node.js", "JSON", "Yeoman"],
     github: "https://github.com/soraplex/midnight-koi",
