@@ -130,20 +130,43 @@ const Sidebar = () => {
   ];
 
   // ⭐ FIX: Delay closing the drawer to allow scroll to complete
-  const handleNavClick = (e, href) => {
-    e.preventDefault();
+  // const handleNavClick = (e, href) => {
+  //   e.preventDefault();
 
+  //   const target = document.querySelector(href);
+  //   if (target) {
+  //     target.scrollIntoView({ behavior: "smooth", block: "start" });
+  //   }
+
+  //   if (isMobile) {
+  //     setTimeout(() => {
+  //       closeMenu();
+  //     }, 300); // Wait 300ms for scroll to finish before closing
+  //   }
+  // };
+
+  const handleNavClick = (e, href) => {
+  e.preventDefault();
+
+  if (isMobile) {
+    // 1. Close drawer first
+    closeMenu();
+
+    // 2. Wait for drawer animation to finish
+    setTimeout(() => {
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 250); // 200–300ms feels perfect
+  } else {
+    // Desktop: scroll immediately
     const target = document.querySelector(href);
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-
-    if (isMobile) {
-      setTimeout(() => {
-        closeMenu();
-      }, 300); // Wait 300ms for scroll to finish before closing
-    }
-  };
+  }
+};
 
   const NavLinks = () => (
     <>
