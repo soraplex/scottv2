@@ -158,7 +158,7 @@ const Sidebar = () => {
       if (target) {
         target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-    }, 250); // 200–300ms feels perfect
+    }, 300); // 200–300ms feels perfect
   } else {
     // Desktop: scroll immediately
     const target = document.querySelector(href);
