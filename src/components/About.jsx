@@ -217,7 +217,7 @@ const About = () => {
         <Flex
           wrap="wrap"
           gap={2}
-          maxW={{ base: "90%", md: "500px" }}
+          maxW={{ base: "90%", md: "560px" }}
         >
           {skills.map((skill) => (
             <Box
