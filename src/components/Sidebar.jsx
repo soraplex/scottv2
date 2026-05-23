@@ -99,6 +99,7 @@ import {
   Stack,
   Link,
   IconButton,
+  Image,
   useDisclosure,
   Drawer,
   DrawerOverlay,
@@ -111,6 +112,7 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { useContact } from "./contactModal/useContact";
 import ContactForm from "./contactModal/ContactForm.jsx";
+import logo from "/logo.png";
 
 const Sidebar = () => {
   // Mobile menu state
@@ -123,7 +125,7 @@ const Sidebar = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   const navItems = [
-    { label: "ABOUT", href: "#about" },
+    { label: "ABOUT", href: "#home" },
     { label: "EXPERIENCE", href: "#experience" },
     { label: "PROJECTS", href: "#projects" },
     { label: "CASE STUDIES", href: "#case-studies" },
@@ -145,28 +147,59 @@ const Sidebar = () => {
   //   }
   // };
 
+  // const handleNavClick = (e, href) => {
+  //   e.preventDefault();
+
+  //   if (isMobile) {
+  //     // 1. Close drawer first
+  //     closeMenu();
+
+  //     // 2. Wait for drawer animation to finish
+  //     setTimeout(() => {
+  //       const target = document.querySelector(href);
+  //       if (target) {
+  //         target.scrollIntoView({ behavior: "smooth", block: "start" });
+  //       }
+  //     }, 300); // 200–300ms feels perfect
+  //   } else {
+  //     // Desktop: scroll immediately
+  //     const target = document.querySelector(href);
+  //     if (target) {
+  //       target.scrollIntoView({ behavior: "smooth", block: "start" });
+  //     }
+  //   }
+  // };
+
+  const scrollWithOffset = (element) => {
+    const headerOffset = 70; // height of your mobile bar
+    const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+    const offsetPosition = elementPosition - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  };
+
   const handleNavClick = (e, href) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (isMobile) {
-    // 1. Close drawer first
-    closeMenu();
+    if (isMobile) {
+      closeMenu();
 
-    // 2. Wait for drawer animation to finish
-    setTimeout(() => {
+      setTimeout(() => {
+        const target = document.querySelector(href);
+        if (target) {
+          scrollWithOffset(target);
+        }
+      }, 250);
+    } else {
       const target = document.querySelector(href);
       if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        scrollWithOffset(target);
       }
-    }, 300); // 200–300ms feels perfect
-  } else {
-    // Desktop: scroll immediately
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }
-};
+  };
 
   const NavLinks = () => (
     <>
@@ -223,14 +256,45 @@ const Sidebar = () => {
   return (
     <Box
       // mt={isMobile ? 0 : "4rem"}
+      pt={isMobile ? "64px" : "0"}
       h={isMobile ? "auto" : "fit-content"}
       position={isMobile ? "relative" : "sticky"}
       top={isMobile ? "0" : "4rem"}
     >
       {/* Mobile Header */}
-      {isMobile && (
+      {/* {isMobile && (
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={4}>
           <Box></Box>
+          <IconButton
+            icon={<HamburgerIcon />}
+            variant="ghost"
+            color="highlight"
+            onClick={openMenu}
+            aria-label="Open Menu"
+          />
+        </Box>
+      )} */}
+
+      {isMobile && (
+        <Box
+          position="fixed"
+          top="0"
+          left="0"
+          right="0"
+          zIndex="1000"
+          bg="bg" // or "blackAlpha.800" for darker
+          backdropFilter="blur(8px)" // optional, looks premium
+          borderBottom="1px solid"
+          borderColor="surface"
+          px={4}
+          py={3}
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          {/* <Image src={logo} alt="Logo" boxSize="32px" objectFit="contain" /> */}
+          <Box>SR</Box>
+
           <IconButton
             icon={<HamburgerIcon />}
             variant="ghost"
@@ -272,7 +336,9 @@ const Sidebar = () => {
         <DrawerOverlay />
 
         <DrawerContent bg="bg" color="text" borderLeft="1px solid" borderColor="surface" p={4}>
-          <DrawerCloseButton right="50px" mt={4} color="highlight" />
+          {/* <DrawerCloseButton right="50px" mt={4} color="highlight" />
+           */}
+          <DrawerCloseButton right="16px" top="16px" color="highlight" />
 
           {/* <DrawerHeader borderBottomWidth="0.px" borderColor="surface" color="accent" mb={4}>
             Menu
