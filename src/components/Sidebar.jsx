@@ -117,6 +117,7 @@ import {
   DrawerBody,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { navItems } from "../data/navigation";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { useContact } from "./contactModal/useContact";
 import ContactForm from "./contactModal/ContactForm.jsx";
@@ -132,12 +133,12 @@ const Sidebar = () => {
   const contact = useContact();
   const isMobile = useBreakpointValue({ base: true, md: false });
 
-  const navItems = [
-    { label: "ABOUT", href: "#home" },
-    { label: "EXPERIENCE", href: "#experience" },
-    { label: "PROJECTS", href: "#projects" },
-    { label: "CASE STUDIES", href: "#case-studies" },
-  ];
+  // const navItems = [
+  //   { label: "ABOUT", href: "#home" },
+  //   { label: "EXPERIENCE", href: "#experience" },
+  //   { label: "PROJECTS", href: "#projects" },
+  //   { label: "CASE STUDIES", href: "#case-studies" },
+  // ];
 
   // ⭐ FIX: Delay closing the drawer to allow scroll to complete
   // const handleNavClick = (e, href) => {
