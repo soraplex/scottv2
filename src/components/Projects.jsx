@@ -133,8 +133,9 @@ import { projects, miniProjects } from "../data/projects";
 
 const Projects = () => {
   return (
-    <Box id="projects" 
-    // px={{ base: 4, md: 0 }}
+    <Box
+      id="projects"
+      // px={{ base: 4, md: 0 }}
     >
       <Heading size="md" mb={6} color="accent">
         Projects
