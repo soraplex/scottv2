@@ -46,7 +46,6 @@ const NavLinks = ({ handleNavClick, openEmail }) => (
         </Link>
       ))}
     </VStack>
-
     <Box mt={10}>
       <Text color="subtleText" fontWeight="600" mb={3}>
         Contact
@@ -82,8 +81,7 @@ const Sidebar = () => {
     if (!target) return;
 
     const headerOffset = 70;
-    const offset =
-      target.getBoundingClientRect().top + window.scrollY - headerOffset;
+    const offset = target.getBoundingClientRect().top + window.scrollY - headerOffset;
 
     if (isMobile) {
       mobileMenu.onClose();
@@ -96,11 +94,7 @@ const Sidebar = () => {
   };
 
   return (
-    <Box
-      pt={isMobile ? "64px" : 0}
-      position={isMobile ? "relative" : "sticky"}
-      top={isMobile ? 0 : "4rem"}
-    >
+    <Box pt={isMobile ? "64px" : 0} position={isMobile ? "relative" : "sticky"} top={isMobile ? 0 : "4rem"}>
       {isMobile && (
         <HStack
           position="fixed"
@@ -140,9 +134,7 @@ const Sidebar = () => {
         I create intuitive products unifying engineering, AI, and design seamlessly.
       </Text>
 
-      {!isMobile && (
-        <NavLinks handleNavClick={handleNavClick} openEmail={email.onOpen} />
-      )}
+      {!isMobile && <NavLinks handleNavClick={handleNavClick} openEmail={email.onOpen} />}
 
       <Stack mt="auto" pt={10} spacing={1}>
         <Text color="muted" fontSize="sm">
@@ -153,27 +145,13 @@ const Sidebar = () => {
         </Text>
       </Stack>
 
-      <Drawer
-        isOpen={mobileMenu.isOpen}
-        placement="right"
-        onClose={mobileMenu.onClose}
-        blockScrollOnMount={false}
-      >
+      <Drawer isOpen={mobileMenu.isOpen} placement="right" onClose={mobileMenu.onClose} blockScrollOnMount={false}>
         <DrawerOverlay />
-        <DrawerContent
-          bg="bg"
-          color="text"
-          borderLeft="1px solid"
-          borderColor="surface"
-          p={4}
-        >
+        <DrawerContent bg="bg" color="text" borderLeft="1px solid" borderColor="surface" p={4}>
           <DrawerCloseButton right="16px" top="16px" color="highlight" />
 
           <DrawerBody>
-            <NavLinks
-              handleNavClick={handleNavClick}
-              openEmail={email.onOpen}
-            />
+            <NavLinks handleNavClick={handleNavClick} openEmail={email.onOpen} />
           </DrawerBody>
         </DrawerContent>
       </Drawer>
