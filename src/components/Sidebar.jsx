@@ -211,7 +211,7 @@ const Sidebar = () => {
   };
 
   const NavLinks = () => (
-    <>
+    <Box>
       <VStack align="start" spacing={2} mt={6}>
         {navItems.map((item) => (
           <Link
@@ -259,7 +259,7 @@ const Sidebar = () => {
           </Link>
         </HStack>
       </Box>
-    </>
+    </Box>
   );
 
   return (
