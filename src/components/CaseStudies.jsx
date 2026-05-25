@@ -18,7 +18,6 @@ import { useState } from "react";
 import { caseStudies } from "../data/caseStudies";
 import { footer } from "../data/footer";
 
-// Shared card styling
 const caseStudyCard = {
   p: 6,
   borderRadius: "lg",

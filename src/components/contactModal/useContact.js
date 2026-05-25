@@ -4,54 +4,41 @@ import { useToast } from "@chakra-ui/react";
 
 export const useContact = () => {
   const toast = useToast();
+
   const [isSending, setIsSending] = useState(false);
   const [statusMessage, setStatusMessage] = useState(null);
 
-  const [formData, setFormData] = useState({
+  const initialForm = {
     name: "",
     email: "",
     subject: "",
     message: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const resetStatus = () => setStatusMessage(null);
+  const [formData, setFormData] = useState(initialForm);
 
-  const resetForm = () =>
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+  const handleChange = (e) =>
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const resetStatus = () => setStatusMessage(null);
+  const resetForm = () => setFormData(initialForm);
 
   const handleSubmit = async (onClose) => {
     setIsSending(true);
-    setStatusMessage(null);
+    resetStatus();
 
     try {
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        formData,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
-      // Show success message
       setStatusMessage({ type: "success", text: "Message sent successfully!" });
-
-      // Reset form fields
       resetForm();
 
-      // ⭐ Smooth auto-close AFTER success message appears
+      // Smooth auto-close
       setTimeout(() => {
         onClose();
         resetStatus();
@@ -65,7 +52,10 @@ export const useContact = () => {
         isClosable: true,
       });
     } catch (error) {
-      setStatusMessage({ type: "error", text: "Failed to send message. Try again." });
+      setStatusMessage({
+        type: "error",
+        text: "Failed to send message. Try again.",
+      });
 
       toast({
         title: "Error",

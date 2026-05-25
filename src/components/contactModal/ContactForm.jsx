@@ -16,6 +16,22 @@ import {
   Text,
 } from "@chakra-ui/react";
 
+// Base styles for all contact form fields
+const contactField = {
+  bg: "bg",
+  borderColor: "muted",
+  focusBorderColor: "accent",
+};
+
+// Styles for the cancel button
+const contactCancelButton = {
+  variant: "ghost",
+  border: "1px solid",
+  borderColor: "brand.600",
+  color: "muted",
+  _hover: { color: "text" },
+};
+
 const ContactModal = ({
   isOpen,
   onClose,
@@ -27,7 +43,7 @@ const ContactModal = ({
   resetStatus,
   resetForm,
 }) => {
-  // ⭐ Reset form + status every time modal opens
+  // Reset form + status every time modal opens
   useEffect(() => {
     if (isOpen) {
       resetStatus?.();
@@ -51,15 +67,7 @@ const ContactModal = ({
         <ModalBody pb={4}>
           <FormControl mb={4}>
             <FormLabel color="subtleText">Your Name</FormLabel>
-            <Input
-              name="name"
-              placeholder="John Doe"
-              value={formData.name}
-              onChange={handleChange}
-              bg="bg"
-              borderColor="muted"
-              focusBorderColor="accent"
-            />
+            <Input name="name" placeholder="John Doe" value={formData.name} onChange={handleChange} {...contactField} />
           </FormControl>
 
           <FormControl mb={4}>
@@ -70,9 +78,7 @@ const ContactModal = ({
               placeholder="you@example.com"
               value={formData.email}
               onChange={handleChange}
-              bg="bg"
-              borderColor="muted"
-              focusBorderColor="accent"
+              {...contactField}
             />
           </FormControl>
 
@@ -83,9 +89,7 @@ const ContactModal = ({
               placeholder="What's this about?"
               value={formData.subject}
               onChange={handleChange}
-              bg="bg"
-              borderColor="muted"
-              focusBorderColor="accent"
+              {...contactField}
             />
           </FormControl>
 
@@ -97,9 +101,7 @@ const ContactModal = ({
               rows={5}
               value={formData.message}
               onChange={handleChange}
-              bg="bg"
-              borderColor="muted"
-              focusBorderColor="accent"
+              {...contactField}
             />
           </FormControl>
         </ModalBody>
@@ -119,14 +121,7 @@ const ContactModal = ({
               Send
             </Button>
 
-            <Button
-              variant="ghost"
-              border="1px solid"
-              borderColor="brand.600"
-              color="muted"
-              _hover={{ color: "text" }}
-              onClick={onClose}
-            >
+            <Button onClick={onClose} {...contactCancelButton}>
               Cancel
             </Button>
           </HStack>
