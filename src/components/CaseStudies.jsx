@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { caseStudies } from "../data/caseStudies";
+import { footer } from "../data/footer";
 
 const CaseStudies = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -96,14 +97,23 @@ const CaseStudies = () => {
             </Link>
           </Box>
         ))}
-
-        
       </Flex>
+      
+      <Box mt={2} textAlign="center" color="muted" display={{ base: "block", md: "none" }}>
+        <Text fontSize="sm">{footer.copyrightName}</Text>
+        <Text fontSize="sm">{footer.copyrightDate}</Text>
+      </Box>
 
       {/* Modal */}
       <Modal {...caseStudy} size="xl" isCentered>
         <ModalOverlay />
-        <ModalContent  maxW={{ base: "90%", md: "xl" }}  bg="bg" color="subtleText" border="1px solid" borderColor="surface">
+        <ModalContent
+          maxW={{ base: "90%", md: "xl" }}
+          bg="bg"
+          color="subtleText"
+          border="1px solid"
+          borderColor="surface"
+        >
           <ModalHeader>{caseStudy.currentStudy.title}</ModalHeader>
           <ModalCloseButton />
 
@@ -112,7 +122,14 @@ const CaseStudies = () => {
               {caseStudy.currentStudy.fullText}
             </Text>
 
-            <Button onClick={caseStudy.handleNext} bg="olive.700" color="olive.100" _hover={{ bg: "olive.600" }} mt={4} mb={4}>
+            <Button
+              onClick={caseStudy.handleNext}
+              bg="olive.700"
+              color="olive.100"
+              _hover={{ bg: "olive.600" }}
+              mt={4}
+              mb={4}
+            >
               Next Case Study →
             </Button>
           </ModalBody>

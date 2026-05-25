@@ -162,7 +162,7 @@ const Sidebar = () => {
       <Drawer isOpen={mobileMenu.isOpen} placement="right" onClose={mobileMenu.onClose} blockScrollOnMount={false}>
         <DrawerOverlay />
         <DrawerContent bg="bg" color="text" borderLeft="1px solid" borderColor="surface" p={4}>
-          <DrawerCloseButton right="16px" top="16px" color="highlight" />
+          <DrawerCloseButton right="16px" top="16px" color="muted" />
 
           <DrawerBody>
             <NavLinks handleNavClick={handleNavClick} />
