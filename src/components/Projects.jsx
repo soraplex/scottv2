@@ -3,8 +3,7 @@ import { FaGithubSquare } from "react-icons/fa";
 import { TbBrowserMaximize } from "react-icons/tb";
 import { projects, miniProjects } from "../data/projects";
 
-// ONE unified card style
-const cardStyles = {
+const projectCard = {
   borderRadius: "lg",
   border: "1px solid rgba(255,255,255,0.06)",
   align: "flex-start",
@@ -22,7 +21,6 @@ const cardStyles = {
   },
 };
 
-// Reusable GitHub + Live link icons (responsive sizing)
 const ProjectLinks = ({ github, live }) => (
   <Flex gap={{ base: 2, md: 3 }}>
     {github && (
@@ -43,7 +41,6 @@ const ProjectLinks = ({ github, live }) => (
   </Flex>
 );
 
-// Reusable tag list
 const Tags = ({ tags }) => (
   <Flex gap={2} mt={3} wrap="wrap">
     {tags.map((tag) => (
@@ -66,7 +63,7 @@ const Projects = () => {
         {projects.map((project) => (
           <Flex
             key={project.title}
-            {...cardStyles}
+            {...projectCard}
             p={{ base: 4, md: 6 }} // original main project padding
             gap={{ base: 4, md: 6 }} // original main project gap
             flexDirection={{ base: "column", md: "row" }}
@@ -110,7 +107,7 @@ const Projects = () => {
         {miniProjects.map((project) => (
           <Flex
             key={project.title}
-            {...cardStyles}
+            {...projectCard}
             p={6} // original mini project padding
             gap={6} // original mini project gap
           >
