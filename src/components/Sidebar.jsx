@@ -20,7 +20,7 @@ import { navItems } from "../data/navigation";
 import { useContact } from "./contactModal/useContact";
 import ContactForm from "./contactModal/ContactForm.jsx";
 
-const NavLinks = ({ handleNavClick, openEmail }) => (
+const NavLinks = ({ handleNavClick }) => (
   <Box>
     <VStack align="start" spacing={2} mt={6}>
       {navItems.map((item) => (
@@ -46,25 +46,28 @@ const NavLinks = ({ handleNavClick, openEmail }) => (
         </Link>
       ))}
     </VStack>
-    <Box mt={10}>
-      <Text color="subtleText" fontWeight="600" mb={3}>
-        Contact
-      </Text>
+  </Box>
+);
 
-      <HStack spacing={4} divider={<Box h="16px" w="1px" bg="muted" />}>
-        <Link href="https://github.com/soraplex" target="_blank" color="highlight">
-          GitHub
-        </Link>
+const ContactLinks = ({ openEmail }) => (
+  <Box mt={10}>
+    <Text color="subtleText" fontWeight="600" mb={3}>
+      Contact
+    </Text>
 
-        <Link href={import.meta.env.VITE_LINKEDIN_URL} target="_blank" color="highlight">
-          LinkedIn
-        </Link>
+    <HStack spacing={4} divider={<Box h="16px" w="1px" bg="muted" />}>
+      <Link href="https://github.com/soraplex" target="_blank" color="highlight">
+        GitHub
+      </Link>
 
-        <Link onClick={openEmail} color="highlight" cursor="pointer">
-          Email
-        </Link>
-      </HStack>
-    </Box>
+      <Link href={import.meta.env.VITE_LINKEDIN_URL} target="_blank" color="highlight">
+        LinkedIn
+      </Link>
+
+      <Link onClick={openEmail} color="highlight" cursor="pointer">
+        Email
+      </Link>
+    </HStack>
   </Box>
 );
 
@@ -95,6 +98,7 @@ const Sidebar = () => {
 
   return (
     <Box pt={isMobile ? "64px" : 0} position={isMobile ? "relative" : "sticky"} top={isMobile ? 0 : "4rem"}>
+      {/* Mobile top bar */}
       {isMobile && (
         <HStack
           position="fixed"
@@ -111,7 +115,6 @@ const Sidebar = () => {
           justify="space-between"
         >
           <Box>SR</Box>
-
           <IconButton
             icon={<HamburgerIcon />}
             variant="ghost"
@@ -122,6 +125,7 @@ const Sidebar = () => {
         </HStack>
       )}
 
+      {/* Header */}
       <Heading size="xl" color="textSubtle">
         Scott
       </Heading>
@@ -134,8 +138,11 @@ const Sidebar = () => {
         I create intuitive products unifying engineering, AI, and design seamlessly.
       </Text>
 
-      {!isMobile && <NavLinks handleNavClick={handleNavClick} openEmail={email.onOpen} />}
+      <ContactLinks openEmail={email.onOpen} />
 
+      {!isMobile && <NavLinks handleNavClick={handleNavClick} />}
+
+      {/* Footer */}
       <Stack mt="auto" pt={10} spacing={1}>
         <Text color="muted" fontSize="sm">
           Built and designed by me — soraplex.
@@ -145,17 +152,19 @@ const Sidebar = () => {
         </Text>
       </Stack>
 
+      {/* ⭐ Mobile Drawer (NO contact links here) */}
       <Drawer isOpen={mobileMenu.isOpen} placement="right" onClose={mobileMenu.onClose} blockScrollOnMount={false}>
         <DrawerOverlay />
         <DrawerContent bg="bg" color="text" borderLeft="1px solid" borderColor="surface" p={4}>
           <DrawerCloseButton right="16px" top="16px" color="highlight" />
 
           <DrawerBody>
-            <NavLinks handleNavClick={handleNavClick} openEmail={email.onOpen} />
+            <NavLinks handleNavClick={handleNavClick} />
           </DrawerBody>
         </DrawerContent>
       </Drawer>
 
+      {/* Contact Modal */}
       <ContactForm {...contact} isOpen={email.isOpen} onClose={email.onClose} />
     </Box>
   );
