@@ -18,6 +18,7 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { navItems } from "../data/navigation";
 import { useContact } from "./contactModal/useContact";
+import { footer } from "../data/footer";
 import ContactForm from "./contactModal/ContactForm.jsx";
 
 const NavLinks = ({ handleNavClick }) => (
@@ -143,12 +144,17 @@ const Sidebar = () => {
       {!isMobile && <NavLinks handleNavClick={handleNavClick} />}
 
       {/* Footer */}
-      <Stack mt="auto" pt={10} spacing={1}>
+      <Stack
+        mt="auto"
+        pt={10}
+        spacing={1}
+        display={{ base: "none", md: "flex" }} 
+      >
         <Text color="muted" fontSize="sm">
-          Built and designed by me — soraplex.
+          {footer.copyrightName}
         </Text>
         <Text color="muted" fontSize="sm">
-          © {new Date().getFullYear()} All rights reserved.
+          {footer.copyrightDate}
         </Text>
       </Stack>
 
