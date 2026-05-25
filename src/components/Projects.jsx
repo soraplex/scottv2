@@ -1,166 +1,74 @@
-// import { Box, Heading, Flex, Text, Image, Tag, Link, SimpleGrid } from "@chakra-ui/react";
-// import { FaGithubSquare } from "react-icons/fa";
-// import { TbBrowserMaximize } from "react-icons/tb";
-// import { projects, miniProjects } from "../data/projects";
-
-// const Projects = () => {
-//   return (
-//     <Box id="projects">
-//       <Heading size="md" mb={6} color="accent">
-//         Projects
-//       </Heading>
-
-//       {/* MAIN PROJECTS */}
-//       <Flex direction="column" gap={6} mb={7}>
-//         {projects.map((project, i) => (
-//           <Flex
-//             key={i}
-//             p={6}
-//             borderRadius="lg"
-//             border="1px solid rgba(255,255,255,0.06)"
-//             gap={6}
-//             align="flex-start"
-//             position="relative"
-//             overflow="hidden"
-//             transition="0.35s ease"
-//             bg="surface"
-//             backdropFilter="blur(18px)"
-//             _hover={{
-//               transform: "scale(1.03)",
-//               backdropFilter: "blur(18px) brightness(1.1)",
-//               bg: "rgba(255,255,255,0.05)",
-//             }}
-//           >
-//             <Image src={project.imageUrl} alt={project.title} w="120px" h="90px" objectFit="cover" borderRadius="md" />
-//             <Box flex="1">
-//               <Flex justify="space-between" align="center">
-//                 <Heading size="md" color="subtleText">
-//                   {project.title}
-//                 </Heading>
-//                 <Flex gap={3}>
-//                   {project.github && (
-//                     <Link href={project.github} target="_blank" color="accent">
-//                       <FaGithubSquare size={22} />
-//                     </Link>
-//                   )}
-//                   {project.live && (
-//                     <Link href={project.live} target="_blank" color="accent">
-//                       <TbBrowserMaximize size={22} />
-//                     </Link>
-//                   )}
-//                 </Flex>
-//               </Flex>
-//               <Text color="muted" mt={2}>
-//                 {project.description}
-//               </Text>
-//               <Flex gap={2} mt={3} wrap="wrap">
-//                 {project.tags.map((tag, idx) => (
-//                   <Tag key={idx} bg="olive.700" color="olive.100">
-//                     {tag}
-//                   </Tag>
-//                 ))}
-//               </Flex>
-//             </Box>
-//           </Flex>
-//         ))}
-//       </Flex>
-//       {/* MINI PROJECTS — SAME STYLING, 3-COLUMN GRID */}
-//       {/* <Heading size="sm" mb={4} color="accent">
-//         Smaller Projects
-//       </Heading> */}
-//       {/* <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-//         {miniProjects.map((project, i) => (
-//           <Flex
-//             key={i}
-//             p={6}
-//             borderRadius="lg"
-//             border="1px solid rgba(255,255,255,0.06)"
-//             gap={6}
-//             align="flex-start"
-//             position="relative"
-//             overflow="hidden"
-//             transition="0.35s ease"
-//             bg="surface"
-//             _hover={{
-//               transform: "scale(1.03)",
-//               backdropFilter: "blur(18px) brightness(1.1)",
-//               bg: "rgba(255,255,255,0.05)",
-//             }}
-//           >
-//             <Box flex="1">
-//               <Flex justify="space-between" align="center">
-//                 <Heading size="sm" color="subtleText">
-//                   {project.title}
-//                 </Heading>
-
-//                 <Flex gap={3}>
-//                   {project.github && (
-//                     <Link href={project.github} target="_blank" color="accent">
-//                       <FaGithubSquare size={20} />
-//                     </Link>
-//                   )}
-//                   {project.live && (
-//                     <Link href={project.live} target="_blank" color="accent">
-//                       <TbBrowserMaximize size={20} />
-//                     </Link>
-//                   )}
-//                 </Flex>
-//               </Flex>
-//               <Text color="muted" mt={2}>
-//                 {project.description}
-//               </Text>
-//               <Flex gap={2} mt={3} wrap="wrap">
-//                 {project.tags.map((tag, idx) => (
-//                   <Tag key={idx} bg="olive.700" color="olive.100">
-//                     {tag}
-//                   </Tag>
-//                 ))}
-//               </Flex>
-//             </Box>
-//           </Flex>
-//         ))}
-//       </SimpleGrid> */}
-//     </Box>
-//   );
-// };
-
-// export default Projects;
-
 import { Box, Heading, Flex, Text, Image, Tag, Link, SimpleGrid } from "@chakra-ui/react";
 import { FaGithubSquare } from "react-icons/fa";
 import { TbBrowserMaximize } from "react-icons/tb";
 import { projects, miniProjects } from "../data/projects";
 
+// ONE unified card style
+const cardStyles = {
+  borderRadius: "lg",
+  border: "1px solid rgba(255,255,255,0.06)",
+  align: "flex-start",
+  position: "relative",
+  overflow: "hidden",
+  bg: "surface",
+  backdropFilter: "blur(18px)",
+  transition:
+    "transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease",
+  _hover: {
+    transform: { base: "translateY(-2px)", md: "scale(1.02)" },
+    boxShadow: "0 12px 32px rgba(0,0,0,0.25)",
+    backdropFilter: "blur(20px) brightness(1.1)",
+    bg: "rgba(255,255,255,0.05)",
+  },
+};
+
+// Reusable GitHub + Live link icons (responsive sizing)
+const ProjectLinks = ({ github, live }) => (
+  <Flex gap={{ base: 2, md: 3 }}>
+    {github && (
+      <Link href={github} target="_blank" color="accent" title="View GitHub Repo">
+        <Box fontSize={{ base: "20px", md: "22px" }}>
+          <FaGithubSquare />
+        </Box>
+      </Link>
+    )}
+
+    {live && (
+      <Link href={live} target="_blank" color="accent" title="View Live Demo">
+        <Box fontSize={{ base: "20px", md: "22px" }}>
+          <TbBrowserMaximize />
+        </Box>
+      </Link>
+    )}
+  </Flex>
+);
+
+// Reusable tag list
+const Tags = ({ tags }) => (
+  <Flex gap={2} mt={3} wrap="wrap">
+    {tags.map((tag) => (
+      <Tag key={tag} bg="olive.700" color="olive.100">
+        {tag}
+      </Tag>
+    ))}
+  </Flex>
+);
+
 const Projects = () => {
   return (
-    <Box
-      id="projects"
-      // px={{ base: 4, md: 0 }}
-    >
+    <Box id="projects">
       <Heading size="md" mb={6} color="accent">
         Projects
       </Heading>
 
-      {/* MAIN PROJECTS - Your exact original + mobile responsive */}
+      {/* MAIN PROJECTS */}
       <Flex direction="column" gap={6} mb={7}>
-        {projects.map((project, i) => (
+        {projects.map((project) => (
           <Flex
-            key={i}
-            p={{ base: 4, md: 6 }}
-            borderRadius="lg"
-            border="1px solid rgba(255,255,255,0.06)"
-            gap={{ base: 4, md: 6 }}
-            align="flex-start"
-            position="relative"
-            overflow="hidden"
-            transition="0.35s ease"
-            bg="surface"
-            backdropFilter="blur(18px)"
-            _hover={{
-              transform: { base: "translateY(-2px)", md: "scale(1.03)" },
-              backdropFilter: "blur(18px) brightness(1.1)",
-              bg: "rgba(255,255,255,0.05)",
-            }}
+            key={project.title}
+            {...cardStyles}
+            p={{ base: 4, md: 6 }} // original main project padding
+            gap={{ base: 4, md: 6 }} // original main project gap
             flexDirection={{ base: "column", md: "row" }}
           >
             <Image
@@ -172,101 +80,54 @@ const Projects = () => {
               borderRadius="md"
               mb={{ base: 3, md: 0 }}
             />
+
             <Box flex="1">
               <Flex
                 justify="space-between"
                 align="center"
                 flexDirection={{ base: "column", md: "row" }}
                 gap={{ base: 2, md: 0 }}
-                mb={{ base: 2, md: 0 }}
               >
                 <Heading size={{ base: "sm", md: "md" }} color="subtleText">
                   {project.title}
                 </Heading>
-                <Flex gap={{ base: 2, md: 3 }}>
-                  {project.github && (
-                    <Link href={project.github} target="_blank" color="accent" title="View GitHub Repo">
-                      <Box fontSize={{ base: "20px", md: "22px" }}>
-                        <FaGithubSquare />
-                      </Box>
-                    </Link>
-                  )}
 
-                  {project.live && (
-                    <Link href={project.live} target="_blank" color="accent" title="View Live Demo">
-                      <Box fontSize={{ base: "20px", md: "22px" }}>
-                        <TbBrowserMaximize />
-                      </Box>
-                    </Link>
-                  )}
-                </Flex>
+                <ProjectLinks github={project.github} live={project.live} />
               </Flex>
+
               <Text color="muted" mt={2}>
                 {project.description}
               </Text>
-              <Flex gap={2} mt={3} wrap="wrap">
-                {project.tags.map((tag, idx) => (
-                  <Tag key={idx} bg="olive.700" color="olive.100">
-                    {tag}
-                  </Tag>
-                ))}
-              </Flex>
+
+              <Tags tags={project.tags} />
             </Box>
           </Flex>
         ))}
       </Flex>
 
-      {/* MINI PROJECTS - Your EXACT original code + mobile grid */}
-      {/* <Heading size="sm" mb={4} color="accent">
-        Smaller Projects
-      </Heading> */}
+      {/* MINI PROJECTS */}
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 4, md: 6 }}>
-        {miniProjects.map((project, i) => (
+        {miniProjects.map((project) => (
           <Flex
-            key={i}
-            p={6}
-            borderRadius="lg"
-            border="1px solid rgba(255,255,255,0.06)"
-            gap={6}
-            align="flex-start"
-            position="relative"
-            overflow="hidden"
-            transition="0.35s ease"
-            bg="surface"
-            _hover={{
-              transform: { base: "translateY(-2px)", md: "scale(1.03)" },
-              backdropFilter: "blur(18px) brightness(1.1)",
-              bg: "rgba(255,255,255,0.05)",
-            }}
+            key={project.title}
+            {...cardStyles}
+            p={6} // original mini project padding
+            gap={6} // original mini project gap
           >
             <Box flex="1">
               <Flex justify="space-between" align="center">
                 <Heading size="sm" color="subtleText">
                   {project.title}
                 </Heading>
-                <Flex gap={3}>
-                  {project.github && (
-                    <Link href={project.github} target="_blank" color="accent">
-                      <FaGithubSquare size={20} />
-                    </Link>
-                  )}
-                  {project.live && (
-                    <Link href={project.live} target="_blank" color="accent">
-                      <TbBrowserMaximize size={20} />
-                    </Link>
-                  )}
-                </Flex>
+
+                <ProjectLinks github={project.github} live={project.live} />
               </Flex>
+
               <Text color="muted" mt={2}>
                 {project.description}
               </Text>
-              <Flex gap={2} mt={3} wrap="wrap">
-                {project.tags.map((tag, idx) => (
-                  <Tag key={idx} bg="olive.700" color="olive.100">
-                    {tag}
-                  </Tag>
-                ))}
-              </Flex>
+
+              <Tags tags={project.tags} />
             </Box>
           </Flex>
         ))}
