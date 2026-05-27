@@ -88,13 +88,15 @@ const CaseStudyModal = ({ isOpen, onClose, study, onNext }) => (
       <ModalCloseButton />
 
       <ModalBody>
-        <Text color="muted" mb={4}>
-          {study.fullText}
-        </Text>
+        <FadeInBox key={study.title} delay={0.1}>
+          <Text color="muted" mb={4}>
+            {study.fullText}
+          </Text>
 
-        <Button onClick={onNext} bg="olive.700" color="olive.100" _hover={{ bg: "olive.600" }} mt={4} mb={4}>
-          Next Case Study →
-        </Button>
+          <Button onClick={onNext} bg="olive.700" color="olive.100" _hover={{ bg: "olive.600" }} mt={4} mb={4}>
+            Next Case Study →
+          </Button>
+        </FadeInBox>
       </ModalBody>
     </ModalContent>
   </Modal>
