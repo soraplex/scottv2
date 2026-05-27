@@ -16,6 +16,8 @@ import {
 
 import { skills } from "../data/skills";
 import { hobbies } from "../data/hobbies";
+import { useFadeIn } from "../hooks/useFadeIn";
+import MotionBox from "./MotionBox";
 
 // Extracted style objects (no components)
 const skillPill = {
@@ -50,12 +52,14 @@ const hobbyItem = {
 
 const About = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const fade = useFadeIn("0.2s");
 
   // You prefer this naming — we keep it
   const aboutModal = { isOpen, onClose };
 
   return (
-    <Box id="about" mt={7}>
+    <Box id="about" mt={7} >
+      <MotionBox >
       <Heading size="md" mb={4} color="accent">
         About Me
       </Heading>
@@ -104,6 +108,7 @@ const About = () => {
       >
         Read More →
       </Link>
+      </MotionBox>
 
       {/* Modal */}
       <Modal {...aboutModal} size="xl" isCentered>
@@ -120,30 +125,33 @@ const About = () => {
           <ModalCloseButton />
 
           <ModalBody>
-            <Text color="muted" mb={4}>
-              I care about visual harmony, system‑level thinking, and component‑driven architecture — creating
-              interfaces that feel intuitive, calm, and human-centered.
-            </Text>
+            <MotionBox>
+              <Text color="muted" mb={4}>
+                I care about visual harmony, system‑level thinking, and component‑driven architecture — creating
+                interfaces that feel intuitive, calm, and human-centered.
+              </Text>
 
-            <Text color="muted" mb={4}>
-              I enjoy working with React, Chakra UI, JavaScript, and design systems, focusing on workflow optimization,
-              theme development, AI-assisted tooling, and delivering products that feel premium and intentional.
-            </Text>
+              <Text color="muted" mb={4}>
+                I enjoy working with React, Chakra UI, JavaScript, and design systems, focusing on workflow
+                optimization, theme development, AI-assisted tooling, and delivering products that feel premium and
+                intentional.
+              </Text>
 
-            <Text color="muted" mb={6}>
-              Outside of coding, these are my hobbies that keep me balanced:
-            </Text>
+              <Text color="muted" mb={6}>
+                Outside of coding, these are my hobbies that keep me balanced:
+              </Text>
 
-            <SimpleGrid columns={{ base: 2, md: 3 }} spacing={6} mb={6}>
-              {hobbies.map((item) => (
-                <Flex key={item.text} {...hobbyItem}>
-                  <Box fontSize="2xl" color="highlight">
-                    <item.icon />
-                  </Box>
-                  <Text>{item.text}</Text>
-                </Flex>
-              ))}
-            </SimpleGrid>
+              <SimpleGrid columns={{ base: 2, md: 3 }} spacing={6} mb={6}>
+                {hobbies.map((item) => (
+                  <Flex key={item.text} {...hobbyItem}>
+                    <Box fontSize="2xl" color="highlight">
+                      <item.icon />
+                    </Box>
+                    <Text>{item.text}</Text>
+                  </Flex>
+                ))}
+              </SimpleGrid>
+            </MotionBox>
           </ModalBody>
         </ModalContent>
       </Modal>
