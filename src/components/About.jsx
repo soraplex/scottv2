@@ -16,8 +16,7 @@ import {
 
 import { skills } from "../data/skills";
 import { hobbies } from "../data/hobbies";
-import { useFadeIn } from "../hooks/useFadeIn";
-import MotionBox from "./MotionBox";
+import FadeInBox from "../ui/MotionBox";
 
 // Extracted style objects (no components)
 const skillPill = {
@@ -52,63 +51,62 @@ const hobbyItem = {
 
 const About = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const fade = useFadeIn("0.2s");
 
   // You prefer this naming — we keep it
   const aboutModal = { isOpen, onClose };
 
   return (
-    <Box id="about" mt={7} >
-      <MotionBox >
-      <Heading size="md" mb={4} color="accent">
-        About Me
-      </Heading>
-
-      <Text color="muted" maxW={{ base: "85%", md: "625px" }} lineHeight="1.7" mb={3}>
-        Focusing on creating digital products shaped by clear architecture, cohesive flow, and subtle details that make
-        technology feel intuitive, reliable, and seamless.
-      </Text>
-
-      {/* Skills */}
-      <Box mt={2}>
-        <Heading size="sm" color="highlight" mb={3} letterSpacing="0.5px" fontWeight="600">
-          Skills I Use
+    <Box id="about" mt={7}>
+      <FadeInBox>
+        <Heading size="md" mb={4} color="accent">
+          About Me
         </Heading>
 
-        <Flex wrap="wrap" gap={2} maxW={{ base: "90%", md: "560px" }}>
-          {skills.map((skill) => (
-            <Box key={skill} {...skillPill}>
-              {skill}
-            </Box>
-          ))}
-        </Flex>
-      </Box>
+        <Text color="muted" maxW={{ base: "85%", md: "625px" }} lineHeight="1.7" mb={3}>
+          Focusing on creating digital products shaped by clear architecture, cohesive flow, and subtle details that
+          make technology feel intuitive, reliable, and seamless.
+        </Text>
 
-      {/* Inline underline link (kept exactly as you prefer) */}
-      <Link
-        onClick={onOpen}
-        color="highlight"
-        cursor="pointer"
-        display="inline-block"
-        mt={3}
-        position="relative"
-        _after={{
-          content: '""',
-          position: "absolute",
-          bottom: "-2px",
-          left: 0,
-          width: "0%",
-          height: "1px",
-          backgroundColor: "highlight",
-          transition: "width 0.25s ease",
-        }}
-        _hover={{
-          _after: { width: "100%" },
-        }}
-      >
-        Read More →
-      </Link>
-      </MotionBox>
+        {/* Skills */}
+        <Box mt={2}>
+          <Heading size="sm" color="highlight" mb={3} letterSpacing="0.5px" fontWeight="600">
+            Skills I Use
+          </Heading>
+
+          <Flex wrap="wrap" gap={2} maxW={{ base: "90%", md: "560px" }}>
+            {skills.map((skill) => (
+              <Box key={skill} {...skillPill}>
+                {skill}
+              </Box>
+            ))}
+          </Flex>
+        </Box>
+
+        {/* Inline underline link (kept exactly as you prefer) */}
+        <Link
+          onClick={onOpen}
+          color="highlight"
+          cursor="pointer"
+          display="inline-block"
+          mt={3}
+          position="relative"
+          _after={{
+            content: '""',
+            position: "absolute",
+            bottom: "-2px",
+            left: 0,
+            width: "0%",
+            height: "1px",
+            backgroundColor: "highlight",
+            transition: "width 0.25s ease",
+          }}
+          _hover={{
+            _after: { width: "100%" },
+          }}
+        >
+          Read More →
+        </Link>
+      </FadeInBox>
 
       {/* Modal */}
       <Modal {...aboutModal} size="xl" isCentered>
@@ -125,7 +123,7 @@ const About = () => {
           <ModalCloseButton />
 
           <ModalBody>
-            <MotionBox>
+            <FadeInBox>
               <Text color="muted" mb={4}>
                 I care about visual harmony, system‑level thinking, and component‑driven architecture — creating
                 interfaces that feel intuitive, calm, and human-centered.
@@ -140,18 +138,20 @@ const About = () => {
               <Text color="muted" mb={6}>
                 Outside of coding, these are my hobbies that keep me balanced:
               </Text>
+            </FadeInBox>
 
-              <SimpleGrid columns={{ base: 2, md: 3 }} spacing={6} mb={6}>
-                {hobbies.map((item) => (
+            <SimpleGrid columns={{ base: 2, md: 3 }} spacing={6} mb={6}>
+              {hobbies.map((item) => (
+                <FadeInBox delay={0.12} >
                   <Flex key={item.text} {...hobbyItem}>
                     <Box fontSize="2xl" color="highlight">
                       <item.icon />
                     </Box>
                     <Text>{item.text}</Text>
                   </Flex>
-                ))}
-              </SimpleGrid>
-            </MotionBox>
+                </FadeInBox>
+              ))}
+            </SimpleGrid>
           </ModalBody>
         </ModalContent>
       </Modal>
