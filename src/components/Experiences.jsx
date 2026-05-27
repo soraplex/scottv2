@@ -28,19 +28,17 @@ const ExperienceTab = ({ company }) => (
 
 const ExperiencePanel = ({ job }) => (
   <TabPanel>
-    <FadeInBox delay={0.12}>
-      <Heading size="md" color="subtleText">
-        {job.role}
-      </Heading>
+    <Heading size="md" color="subtleText">
+      {job.role}
+    </Heading>
 
-      <Text color="subtleText" mt={1} mb={4}>
-        {job.date}
-      </Text>
+    <Text color="subtleText" mt={1} mb={4}>
+      {job.date}
+    </Text>
 
-      {job.jobDescription.map((line) => (
-        <Bullet key={line}>{line}</Bullet>
-      ))}
-    </FadeInBox>
+    {job.jobDescription.map((line) => (
+      <Bullet key={line}>{line}</Bullet>
+    ))}
   </TabPanel>
 );
 

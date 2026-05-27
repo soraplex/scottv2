@@ -2,6 +2,7 @@ import { Box, Heading, Flex, Text, Image, Tag, Link, SimpleGrid } from "@chakra-
 import { FaGithubSquare } from "react-icons/fa";
 import { TbBrowserMaximize } from "react-icons/tb";
 import { projects, miniProjects } from "../data/projects";
+import FadeInBox from "../shared/MotionBox";
 
 const projectCard = {
   borderRadius: "lg",
@@ -54,81 +55,83 @@ const Tags = ({ tags }) => (
 const Projects = () => {
   return (
     <Box id="projects">
-      <Heading size="md" mb={6} color="accent">
-        Projects
-      </Heading>
+      <FadeInBox>
+        <Heading size="md" mb={6} color="accent">
+          Projects
+        </Heading>
 
-      {/* MAIN PROJECTS */}
-      <Flex direction="column" gap={6} mb={7}>
-        {projects.map((project) => (
-          <Flex
-            key={project.title}
-            {...projectCard}
-            p={{ base: 4, md: 6 }} // original main project padding
-            gap={{ base: 4, md: 6 }} // original main project gap
-            flexDirection={{ base: "column", md: "row" }}
-          >
-            <Image
-              src={project.imageUrl}
-              alt={project.title}
-              w={{ base: "100%", md: "120px" }}
-              h={{ base: "140px", md: "90px" }}
-              objectFit="cover"
-              borderRadius="md"
-              mb={{ base: 3, md: 0 }}
-            />
+        {/* MAIN PROJECTS */}
+        <Flex direction="column" gap={6} mb={7}>
+          {projects.map((project) => (
+            <Flex
+              key={project.title}
+              {...projectCard}
+              p={{ base: 4, md: 6 }} // original main project padding
+              gap={{ base: 4, md: 6 }} // original main project gap
+              flexDirection={{ base: "column", md: "row" }}
+            >
+              <Image
+                src={project.imageUrl}
+                alt={project.title}
+                w={{ base: "100%", md: "120px" }}
+                h={{ base: "140px", md: "90px" }}
+                objectFit="cover"
+                borderRadius="md"
+                mb={{ base: 3, md: 0 }}
+              />
 
-            <Box flex="1">
-              <Flex
-                justify="space-between"
-                align="center"
-                flexDirection={{ base: "column", md: "row" }}
-                gap={{ base: 2, md: 0 }}
-              >
-                <Heading size={{ base: "sm", md: "md" }} color="subtleText">
-                  {project.title}
-                </Heading>
+              <Box flex="1">
+                <Flex
+                  justify="space-between"
+                  align="center"
+                  flexDirection={{ base: "column", md: "row" }}
+                  gap={{ base: 2, md: 0 }}
+                >
+                  <Heading size={{ base: "sm", md: "md" }} color="subtleText">
+                    {project.title}
+                  </Heading>
 
-                <ProjectLinks github={project.github} live={project.live} />
-              </Flex>
+                  <ProjectLinks github={project.github} live={project.live} />
+                </Flex>
 
-              <Text color="muted" mt={2}>
-                {project.description}
-              </Text>
+                <Text color="muted" mt={2}>
+                  {project.description}
+                </Text>
 
-              <Tags tags={project.tags} />
-            </Box>
-          </Flex>
-        ))}
-      </Flex>
+                <Tags tags={project.tags} />
+              </Box>
+            </Flex>
+          ))}
+        </Flex>
 
-      {/* MINI PROJECTS */}
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 4, md: 6 }}>
-        {miniProjects.map((project) => (
-          <Flex
-            key={project.title}
-            {...projectCard}
-            p={6} // original mini project padding
-            gap={6} // original mini project gap
-          >
-            <Box flex="1">
-              <Flex justify="space-between" align="center">
-                <Heading size="sm" color="subtleText">
-                  {project.title}
-                </Heading>
+        {/* MINI PROJECT CARDS */}
+        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 4, md: 6 }}>
+          {miniProjects.map((project) => (
+            <Flex
+              key={project.title}
+              {...projectCard}
+              p={6}
+              gap={6}
+            >
+              <Box flex="1">
+                <Flex justify="space-between" align="center">
+                  <Heading size="sm" color="subtleText">
+                    {project.title}
+                  </Heading>
 
-                <ProjectLinks github={project.github} live={project.live} />
-              </Flex>
+                  <ProjectLinks github={project.github} live={project.live} />
+                </Flex>
 
-              <Text color="muted" mt={2}>
-                {project.description}
-              </Text>
+                <Text color="muted" mt={2}>
+                  {project.description}
+                </Text>
 
-              <Tags tags={project.tags} />
-            </Box>
-          </Flex>
-        ))}
-      </SimpleGrid>
+                <Tags tags={project.tags} />
+              </Box>
+            </Flex>
+          ))}
+        </SimpleGrid>
+      </FadeInBox>
     </Box>
   );
 };
