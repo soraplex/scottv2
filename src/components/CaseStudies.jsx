@@ -17,6 +17,7 @@ import {
 import { useState } from "react";
 import { caseStudies } from "../data/caseStudies";
 import { footer } from "../data/footer";
+import FadeInBox from "../shared/MotionBox";
 
 const caseStudyCard = {
   p: 6,
@@ -31,7 +32,6 @@ const caseStudyCard = {
   },
 };
 
-// Reusable tag list
 const TagList = ({ tags }) => (
   <Flex gap={2} wrap="wrap">
     {tags.map((tag) => (
@@ -42,7 +42,6 @@ const TagList = ({ tags }) => (
   </Flex>
 );
 
-// Reusable card
 const CaseStudyCard = ({ study, onOpen }) => (
   <Box {...caseStudyCard}>
     <Heading size="md" color="subtleText">
@@ -81,7 +80,6 @@ const CaseStudyCard = ({ study, onOpen }) => (
   </Box>
 );
 
-// Reusable modal
 const CaseStudyModal = ({ isOpen, onClose, study, onNext }) => (
   <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
     <ModalOverlay />
@@ -117,22 +115,24 @@ const CaseStudies = () => {
 
   return (
     <Box id="case-studies">
-      <Heading size="md" mb={6} color="accent">
-        Case Studies
-      </Heading>
+      <FadeInBox>
+        <Heading size="md" mb={6} color="accent">
+          Case Studies
+        </Heading>
 
-      <Flex direction="column" gap={6}>
-        {caseStudies.map((study, index) => (
-          <CaseStudyCard key={study.title} study={study} onOpen={() => openModal(index)} />
-        ))}
-      </Flex>
+        <Flex direction="column" gap={6}>
+          {caseStudies.map((study, index) => (
+            <CaseStudyCard key={study.title} study={study} onOpen={() => openModal(index)} />
+          ))}
+        </Flex>
 
-      <Box mt={2} textAlign="center" color="muted" display={{ base: "block", md: "none" }}>
-        <Text fontSize="sm">{footer.copyrightName}</Text>
-        <Text fontSize="sm">{footer.copyrightDate}</Text>
-      </Box>
+        <Box mt={2} textAlign="center" color="muted" display={{ base: "block", md: "none" }}>
+          <Text fontSize="sm">{footer.copyrightName}</Text>
+          <Text fontSize="sm">{footer.copyrightDate}</Text>
+        </Box>
 
-      <CaseStudyModal isOpen={isOpen} onClose={onClose} study={caseStudies[currentIndex]} onNext={handleNext} />
+        <CaseStudyModal isOpen={isOpen} onClose={onClose} study={caseStudies[currentIndex]} onNext={handleNext} />
+      </FadeInBox>
     </Box>
   );
 };
