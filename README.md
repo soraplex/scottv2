@@ -1,24 +1,9 @@
 # 🌐 Personal Portfolio — Built with Vite + React
 
-Welcome to my personal portfolio! This site highlights my work, skills, and creative approach to web development. Built with [Vite](https://vitejs.dev/) for lightning-fast performance and [React](https://reactjs.org/) for dynamic, interactive UIs, it blends technical precision with aesthetic intent.
+This is my personal portfolio, designed to highlight my work and the way I think about building clean, intuitive interfaces. It’s built with a modern stack focused on speed, simplicity, and a smooth user experience.
 
-
-<!-- ## 🚀 Live Site
-
-
-[Visit My Portfolio](https://scottydotcom.netlify.app/)  
-
-
-## 🛠️ Tech Stack
-
-- **Framework**: [React](https://reactjs.org/) — JavaScript UI library for building interactive components
-
-- **Language**: [JavaScript](https://www.javascript.com/) — Core programming language
-
-- **Bundler**: [Vite](https://vitejs.dev/) — A fast build tool and development server 
-
-- **Styling**: [CSS](https://www.w3.org/Style/CSS/) — Custom styles for layout and design
-
-- **Deployment**: [Netlify](https://www.netlify.com/) — Hosting and continuous deployment
-
-- **Source Control**: [Git](https://git-scm.com/) + [GitHub](https://github.com/) — Code tracking and collaboration -->
+## 🛠️ Technologies Used
+- **Framework:** [React](https://react.dev/)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Language:** [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- **UI Library:** [Chakra UI](https://chakra-ui.com/)

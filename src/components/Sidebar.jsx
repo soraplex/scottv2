@@ -158,7 +158,7 @@ const Sidebar = () => {
         </Text>
       </Stack>
 
-      {/* ⭐ Mobile Drawer (NO contact links here) */}
+      {/* Mobile Drawer */}
       <Drawer isOpen={mobileMenu.isOpen} placement="right" onClose={mobileMenu.onClose} blockScrollOnMount={false}>
         <DrawerOverlay />
         <DrawerContent bg="bg" color="text" borderLeft="1px solid" borderColor="surface" p={4}>
