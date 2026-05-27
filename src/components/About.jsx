@@ -16,7 +16,7 @@ import {
 
 import { skills } from "../data/skills";
 import { hobbies } from "../data/hobbies";
-import FadeInBox from "../ui/MotionBox";
+import FadeInBox from "../shared/MotionBox";
 
 // Extracted style objects (no components)
 const skillPill = {
