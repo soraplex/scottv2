@@ -18,7 +18,6 @@ import { skills } from "../data/skills";
 import { hobbies } from "../data/hobbies";
 import FadeInBox from "../shared/MotionBox";
 
-// Extracted style objects (no components)
 const skillPill = {
   px: 3,
   py: 1,
@@ -44,7 +43,7 @@ const hobbyItem = {
   pl: "25px",
   transition: "all 0.25s ease",
   _hover: {
-    transform: "scale(1.03)",
+    transform: "scale(1.05)",
     filter: "brightness(1.15)",
   },
 };
@@ -52,7 +51,6 @@ const hobbyItem = {
 const About = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // You prefer this naming — we keep it
   const aboutModal = { isOpen, onClose };
 
   return (
@@ -82,7 +80,6 @@ const About = () => {
           </Flex>
         </Box>
 
-        {/* Inline underline link (kept exactly as you prefer) */}
         <Link
           onClick={onOpen}
           color="highlight"
@@ -108,7 +105,6 @@ const About = () => {
         </Link>
       </FadeInBox>
 
-      {/* Modal */}
       <Modal {...aboutModal} size="xl" isCentered>
         <ModalOverlay />
         <ModalContent
@@ -142,7 +138,7 @@ const About = () => {
 
             <SimpleGrid columns={{ base: 2, md: 3 }} spacing={6} mb={6}>
               {hobbies.map((item) => (
-                <FadeInBox delay={0.12} >
+                <FadeInBox delay={0.12}>
                   <Flex key={item.text} {...hobbyItem}>
                     <Box fontSize="2xl" color="highlight">
                       <item.icon />
