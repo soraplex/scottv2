@@ -36,6 +36,7 @@ import About from "./components/About";
 import Experiences from "./components/Experiences";
 import Projects from "./components/Projects";
 import CaseStudies from "./components/CaseStudies";
+import Footer from "./shared/Footer";
 
 const App = () => {
   // Determine if we are on mobile (standard Chakra breakpoint)
@@ -56,10 +57,9 @@ const App = () => {
         <Experiences />
         <Projects />
         <CaseStudies />
-        {/* <Box mt={2} textAlign="center" color="muted" display={{ base: "block", md: "none" }}>
-          <Text fontSize="sm">{footer.copyrightName}</Text>
-          <Text fontSize="sm">{footer.copyrightDate}</Text>
-        </Box> */}
+        <Box mt={-16} textAlign="center" color="muted" display={{ base: "block", md: "none" }}>
+          <Footer />
+        </Box>
       </Box>
     </Flex>
   );

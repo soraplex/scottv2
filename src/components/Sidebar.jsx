@@ -18,8 +18,8 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { navItems } from "../data/navigation";
 import { useContact } from "./contactModal/useContact";
-import { footer } from "../data/footer";
-import ContactForm from "./contactModal/ContactForm.jsx";
+import Footer from "../shared/Footer";
+import ContactForm from "./contactModal/ContactForm";
 
 const NavLinks = ({ handleNavClick }) => (
   <Box>
@@ -144,18 +144,8 @@ const Sidebar = () => {
       {!isMobile && <NavLinks handleNavClick={handleNavClick} />}
 
       {/* Footer */}
-      <Stack
-        mt="auto"
-        pt={10}
-        spacing={1}
-        display={{ base: "none", md: "flex" }} 
-      >
-        <Text color="muted" fontSize="sm">
-          {footer.copyrightName}
-        </Text>
-        <Text color="muted" fontSize="sm">
-          {footer.copyrightDate}
-        </Text>
+      <Stack mt="auto" pt={10} spacing={1} display={{ base: "none", md: "flex" }}>
+        <Footer />
       </Stack>
 
       {/* Mobile Drawer */}

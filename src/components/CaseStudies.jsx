@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { caseStudies } from "../data/caseStudies";
-import { footer } from "../data/footer";
 import FadeInBox from "../shared/MotionBox";
 
 const caseStudyCard = {
