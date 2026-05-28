@@ -106,7 +106,6 @@ const Sidebar = () => {
       position={isMobile ? "relative" : "sticky"}
       top={isMobile ? 0 : "4rem"}
     >
-      {/* Mobile top bar */}
       {isMobile && (
         <HStack
           position="fixed"
@@ -150,7 +149,6 @@ const Sidebar = () => {
 
       {!isMobile && <NavLinks handleNavClick={handleNavClick} />}
 
-      {/* Footer */}
       <Stack mt="auto" pt={10} spacing={1} display={{ base: "none", md: "flex" }}>
         <Footer />
       </Stack>

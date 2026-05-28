@@ -7,13 +7,11 @@ const theme = extendTheme({
     useSystemColorMode: false,
   },
 
-  // ⭐ FONT CONFIG
   fonts: {
     heading: "DM Sans Variable, sans-serif",
     body: "DM Sans Variable, sans-serif",
   },
 
-  // ⭐ PREMIUM TYPOGRAPHY SCALE
   textStyles: {
     h1: {
       fontSize: ["2.4rem", "3rem"],

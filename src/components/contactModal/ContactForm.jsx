@@ -16,14 +16,12 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-// Base styles for all contact form fields
 const contactField = {
   bg: "bg",
   borderColor: "muted",
   focusBorderColor: "accent",
 };
 
-// Styles for the cancel button
 const contactCancelButton = {
   variant: "ghost",
   border: "1px solid",
@@ -43,7 +41,6 @@ const ContactModal = ({
   resetStatus,
   resetForm,
 }) => {
-  // Reset form + status every time modal opens
   useEffect(() => {
     if (isOpen) {
       resetStatus?.();

@@ -17,8 +17,7 @@ export const useContact = () => {
 
   const [formData, setFormData] = useState(initialForm);
 
-  const handleChange = (e) =>
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (e) => setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const resetStatus = () => setStatusMessage(null);
   const resetForm = () => setFormData(initialForm);
@@ -32,13 +31,12 @@ export const useContact = () => {
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formData,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
 
       setStatusMessage({ type: "success", text: "Message sent successfully!" });
       resetForm();
 
-      // Smooth auto-close
       setTimeout(() => {
         onClose();
         resetStatus();

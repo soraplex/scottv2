@@ -60,7 +60,6 @@ const Projects = () => {
           Projects
         </Heading>
 
-        {/* MAIN PROJECTS */}
         <Flex direction="column" gap={6} mb={7}>
           {projects.map((project) => (
             <Flex
@@ -104,15 +103,9 @@ const Projects = () => {
           ))}
         </Flex>
 
-        {/* MINI PROJECT CARDS */}
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 4, md: 6 }}>
           {miniProjects.map((project) => (
-            <Flex
-              key={project.title}
-              {...projectCard}
-              p={6}
-              gap={6}
-            >
+            <Flex key={project.title} {...projectCard} p={6} gap={6}>
               <Box flex="1">
                 <Flex justify="space-between" align="center">
                   <Heading size="sm" color="subtleText">
