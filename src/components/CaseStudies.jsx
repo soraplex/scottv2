@@ -128,11 +128,6 @@ const CaseStudies = () => {
           ))}
         </Flex>
 
-        <Box mt={2} textAlign="center" color="muted" display={{ base: "block", md: "none" }}>
-          <Text fontSize="sm">{footer.copyrightName}</Text>
-          <Text fontSize="sm">{footer.copyrightDate}</Text>
-        </Box>
-
         <CaseStudyModal isOpen={isOpen} onClose={onClose} study={caseStudies[currentIndex]} onNext={handleNext} />
       </FadeInBox>
     </Box>

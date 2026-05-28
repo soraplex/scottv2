@@ -46,7 +46,7 @@ const App = () => {
     <Flex direction={isMobile ? "column" : "row"} maxW="1200px" mx="auto" p={isMobile ? 4 : 10} gap={10}>
       {/* Sidebar Column */}
       {/* On mobile, this is just a static block at the top, not sticky */}
-      <Box id="home"w={isMobile ? "100%" : "300px"} flexShrink={0}>
+      <Box id="home" w={isMobile ? "100%" : "300px"} flexShrink={0}>
         <Sidebar />
       </Box>
 
@@ -56,6 +56,10 @@ const App = () => {
         <Experiences />
         <Projects />
         <CaseStudies />
+        {/* <Box mt={2} textAlign="center" color="muted" display={{ base: "block", md: "none" }}>
+          <Text fontSize="sm">{footer.copyrightName}</Text>
+          <Text fontSize="sm">{footer.copyrightDate}</Text>
+        </Box> */}
       </Box>
     </Flex>
   );
