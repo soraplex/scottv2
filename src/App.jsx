@@ -30,7 +30,7 @@
 
 // export default App;
 
-import { Flex, Box, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, Box, VStack, useBreakpointValue } from "@chakra-ui/react";
 import Sidebar from "./components/Sidebar";
 import About from "./components/About";
 import Experiences from "./components/Experiences";
@@ -39,25 +39,22 @@ import CaseStudies from "./components/CaseStudies";
 import Footer from "./shared/Footer";
 
 const App = () => {
-  // Determine if we are on mobile (standard Chakra breakpoint)
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
-    // Use Flex to force the container to full height so the footer can stick to bottom
     <Flex direction={isMobile ? "column" : "row"} maxW="1200px" mx="auto" p={isMobile ? 4 : 10} gap={10}>
-      {/* Sidebar Column */}
-      {/* On mobile, this is just a static block at the top, not sticky */}
       <Box id="home" w={isMobile ? "100%" : "300px"} flexShrink={0}>
         <Sidebar />
       </Box>
 
-      {/* Main Content Column */}
-      <Box flex="1" display="flex" flexDirection="column" gap={12} w="100%">
-        <About />
-        <Experiences />
-        <Projects />
-        <CaseStudies />
-        <Box mt={-16} textAlign="center" color="muted" display={{ base: "block", md: "none" }}>
+      <Box flex="1" display="flex" flexDirection="column" w="100%">
+        <VStack spacing={12} align="stretch" >
+          <About />
+          <Experiences />
+          <Projects />
+          <CaseStudies />
+        </VStack>
+        <Box textAlign="center" color="muted" display={{ base: "block", md: "none" }}>
           <Footer />
         </Box>
       </Box>
