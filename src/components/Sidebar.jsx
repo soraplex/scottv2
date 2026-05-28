@@ -98,7 +98,14 @@ const Sidebar = () => {
   };
 
   return (
-    <Box pt={isMobile ? "64px" : 0} position={isMobile ? "relative" : "sticky"} top={isMobile ? 0 : "4rem"}>
+    <Box
+      display="flex"
+      flexDirection="column"
+      height="50%"
+      pt={isMobile ? "64px" : 0}
+      position={isMobile ? "relative" : "sticky"}
+      top={isMobile ? 0 : "4rem"}
+    >
       {/* Mobile top bar */}
       {isMobile && (
         <HStack
