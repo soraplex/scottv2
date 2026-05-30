@@ -20,6 +20,7 @@ import { navItems } from "../data/navigation";
 import { useContact } from "./contactModal/useContact";
 import Footer from "../shared/Footer";
 import ContactForm from "./contactModal/ContactForm";
+import FadeInBox from "../shared/MotionBox";
 
 const NavLinks = ({ handleNavClick }) => (
   <Box>
@@ -133,24 +134,30 @@ const Sidebar = () => {
       )}
 
       {/* Header */}
-      <Heading size="xl" color="textSubtle">
-        Scott
-      </Heading>
+      <FadeInBox>
+        <Heading size="xl" color="textSubtle">
+          Scott
+        </Heading>
 
-      <Text color="muted" mt={2}>
-        Full Stack · AI · UI/UX Designer
-      </Text>
+        <Text color="muted" mt={2}>
+          Full Stack · AI · UI/UX Designer
+        </Text>
 
-      <Text color="muted" mt={4} maxW={{ base: "80%", md: "none" }}>
-        I create intuitive products unifying engineering, AI, and design seamlessly.
-      </Text>
+        <Text color="muted" mt={4} maxW={{ base: "80%", md: "none" }}>
+          I create intuitive products unifying engineering, AI, and design seamlessly.
+        </Text>
+      </FadeInBox>
 
-      <ContactLinks openEmail={email.onOpen} />
+      <FadeInBox delay={0.2}>{!isMobile && <NavLinks handleNavClick={handleNavClick} />}</FadeInBox>
 
-      {!isMobile && <NavLinks handleNavClick={handleNavClick} />}
+      <FadeInBox delay={0.4}>
+        <ContactLinks openEmail={email.onOpen} />
+      </FadeInBox>
 
       <Stack mt="auto" pt={10} spacing={1} display={{ base: "none", md: "flex" }}>
-        <Footer />
+        <FadeInBox delay={0.6}>
+          <Footer />
+        </FadeInBox>
       </Stack>
 
       {/* Mobile Drawer */}
