@@ -16,7 +16,7 @@ const App = () => {
       </Box>
 
       <Box flex="1" display="flex" flexDirection="column" w="100%">
-        <VStack spacing={12} align="stretch" >
+        <VStack spacing={12} align="stretch">
           <About />
           <Experiences />
           <Projects />
