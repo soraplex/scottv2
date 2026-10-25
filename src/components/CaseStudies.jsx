@@ -79,27 +79,75 @@ const CaseStudyCard = ({ study, onOpen }) => (
   </Box>
 );
 
-const CaseStudyModal = ({ isOpen, onClose, study, onNext }) => (
-  <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
-    <ModalOverlay />
-    <ModalContent maxW={{ base: "90%", md: "xl" }} bg="bg" color="subtleText" border="1px solid" borderColor="surface">
-      <ModalHeader>{study.title}</ModalHeader>
-      <ModalCloseButton />
+const CaseStudyModal = ({ isOpen, onClose, study, onNext }) => {
+  if (!study) return null;
 
-      <ModalBody>
-        <FadeInBox key={study.title} delay={0.1}>
-          <Text color="muted" mb={4}>
-            {study.fullText}
-          </Text>
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} size="xl" scrollBehavior="inside" isCentered>
+      <ModalOverlay />
 
-          <Button onClick={onNext} bg="olive.700" color="olive.100" _hover={{ bg: "olive.600" }} mt={4} mb={4}>
-            Next Case Study →
-          </Button>
-        </FadeInBox>
-      </ModalBody>
-    </ModalContent>
-  </Modal>
-);
+      <ModalContent
+        maxW={{ base: "90%", md: "xl" }}
+        bg="bg"
+        color="subtleText"
+        border="1px solid"
+        borderColor="surface"
+      >
+        <ModalHeader borderBottom="1px solid" borderColor="surface" pb={4}>
+          {study.title}
+        </ModalHeader>
+
+        <ModalCloseButton />
+
+        <ModalBody pt={6} pb={6}>
+          <FadeInBox key={study.title} delay={0.1}>
+            <Flex direction="column" gap={6}>
+              {study.sections.map((section, index) => (
+                <Box key={index}>
+                  <Heading size="xs" color="accent" textTransform="uppercase" letterSpacing="wider" mb={3}>
+                    {section.heading}
+                  </Heading>
+
+                  {section.text && (
+                    <Text color="muted" fontSize="sm" lineHeight="tall">
+                      {section.text}
+                    </Text>
+                  )}
+
+                  {section.bullets && (
+                    <Box
+                      as="ul"
+                      pl={5}
+                      mt={1}
+                      color="muted"
+                      fontSize="sm"
+                      lineHeight="tall"
+                      sx={{
+                        li: {
+                          mb: 3,
+                        },
+                      }}
+                    >
+                      {section.bullets.map((bullet, bIndex) => (
+                        <Box as="li" key={bIndex}>
+                          {bullet}
+                        </Box>
+                      ))}
+                    </Box>
+                  )}
+                </Box>
+              ))}
+            </Flex>
+
+            <Button onClick={onNext} bg="olive.700" color="olive.100" _hover={{ bg: "olive.600" }} mt={10} width="full">
+              Next Case Study →
+            </Button>
+          </FadeInBox>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  );
+};
 
 const CaseStudies = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
