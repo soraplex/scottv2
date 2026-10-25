@@ -3,7 +3,7 @@ export const caseStudies = [
     title: "Adaptive Micro-Dashboard",
     summary:
       "A lightweight, adaptive micro-dashboard designed to reduce cognitive load and deliver glanceable insights.",
-    tags: ["Figma", "HTML/CSS", "Vanilla JS"],
+    tags: ["HTML/CSS", "Vanilla JS", "UI/UX Design"],
     sections: [
       {
         heading: "Overview",
