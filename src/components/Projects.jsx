@@ -103,7 +103,7 @@ const Projects = () => {
           ))}
         </Flex>
 
-        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 4, md: 3 }}>
+        {/* <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 4, md: 3 }}>
           {miniProjects.map((project) => (
             <Flex key={project.title} {...projectCard} p={6} gap={6}>
               <Box flex="1">
@@ -123,7 +123,7 @@ const Projects = () => {
               </Box>
             </Flex>
           ))}
-        </SimpleGrid>
+        </SimpleGrid> */}
       </FadeInBox>
     </Box>
   );
