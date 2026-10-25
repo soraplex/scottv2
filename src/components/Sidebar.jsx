@@ -102,7 +102,7 @@ const Sidebar = () => {
     <Box
       display="flex"
       flexDirection="column"
-      minH="91vh"
+      minH="52%"
       pt={isMobile ? "64px" : 0}
       position={isMobile ? "relative" : "sticky"}
       top={isMobile ? 0 : "4rem"}
