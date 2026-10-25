@@ -1,20 +1,20 @@
 export const caseStudies = [
   {
-    title: "Adaptive Micro‑Dashboard",
+    title: "Adaptive Micro-Dashboard",
     summary:
       "A lightweight, adaptive micro-dashboard designed to reduce cognitive load and deliver glanceable insights.",
     tags: ["Figma", "HTML/CSS", "Vanilla JS"],
     sections: [
       {
         heading: "Overview",
-        text: "A rapid 1-day exploration of a lightweight, adaptive micro-dashboard designed to intelligently surface essential information, reduce cognitive load, and deliver a seamless cross-device experience.",
+        text: "An exploration of a lightweight, adaptive micro-dashboard designed to intelligently surface essential information, reduce cognitive load, and deliver a seamless cross-device experience.",
       },
       {
         heading: "The Problem",
         bullets: [
           "Information overload caused by dense layouts and excessive metrics.",
           "Essential information hidden behind unnecessarily deep navigation.",
-          "Poor mobile usability due to rigid desktop-first grid systems.",
+          "Poor mobile usability due to rigid desktop-first design systems.",
         ],
       },
       {
@@ -42,40 +42,46 @@ export const caseStudies = [
 
   {
     title: "Building a Component Library",
-    summary: "How I created a scalable design system and React component library for a SaaS dashboard.",
-    tags: ["Design Systems", "React", "Chakra UI"],
+    summary:
+      "A reusable React component library designed to accelerate development while providing complete styling flexibility.",
+
+    tags: ["React", "Design Systems", "Component Library"],
+
     sections: [
       {
         heading: "Overview",
-        text: "Built a scalable component system that improved consistency, accessibility, and development speed across product teams.",
+        text: "A lightweight React component library focused on reusable UI patterns, rapid integration, and complete visual customization.",
       },
       {
         heading: "The Problem",
-        text: "UI inconsistencies and duplicated engineering effort created friction for both designers and developers.",
+        bullets: [
+          "Duplicate UI components increased development time.",
+          "Inconsistent patterns created maintenance challenges.",
+          "Many libraries imposed restrictive default styling.",
+        ],
       },
       {
         heading: "Solution & Key Features",
         bullets: [
-          "Audited existing interface patterns.",
-          "Created reusable Chakra UI components.",
-          "Established documentation and usage guidelines.",
+          "Reusable React components with consistent APIs.",
+          "Simple installation and integration process.",
+          "Styling-agnostic architecture with full customization control.",
         ],
       },
       {
         heading: "Engineering & Tech Highlights",
         bullets: [
-          "",
-          "",
-          "",
+          "Built with modular, composable React components.",
+          "Separated component logic from presentation styles.",
+          "Designed for scalability and easy future expansion.",
         ],
       },
       {
         heading: "Outcome & Impact",
-        text: "",
+        text: "Reduced UI duplication, improved development efficiency, and reinforced best practices in component architecture and design systems.",
       },
     ],
   },
-
   {
     title: "Modern Settings Dashboard",
     summary:
@@ -88,7 +94,11 @@ export const caseStudies = [
       },
       {
         heading: "The Problem",
-        text: "Most portfolio projects showcase simple landing pages, but rarely demonstrate the complexity found within real SaaS product settings environments.",
+        bullets: [
+          "Managing numerous settings can quickly become overwhelming for users.",
+          "Poor organization makes preferences harder to find and update.",
+          "Settings interfaces must remain intuitive across devices.",
+        ],
       },
       {
         heading: "Solution & Key Features",
