@@ -14,7 +14,7 @@ import {
   Button,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { caseStudies } from "../data/caseStudies";
 import FadeInBox from "../shared/MotionBox";
 
@@ -82,11 +82,21 @@ const CaseStudyCard = ({ study, onOpen }) => (
 const CaseStudyModal = ({ isOpen, onClose, study, onNext }) => {
   if (!study) return null;
 
+  const modalBodyRef = useRef(null);
+
+  useEffect(() => {
+    modalBodyRef.current?.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [study]);
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl" scrollBehavior="inside" isCentered>
       <ModalOverlay />
 
       <ModalContent
+        key={study.title}
         maxW={{ base: "90%", md: "xl" }}
         bg="bg"
         color="subtleText"
