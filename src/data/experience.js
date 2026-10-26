@@ -1,5 +1,15 @@
 export const experience = [
   {
+    company: "RFam Community",
+    role: "Freelance Frontend Developer",
+    date: "2026-Present",
+    jobDescription: [
+      "Developed a community platform supporting 20,000+ members and creator audiences totaling 600,000+ followers.",
+      "Integrated APIs to automate content and social updates across Twitch, YouTube, TikTok, and Discord.",
+      "Streamlined onboarding through a structured FAQ system that reduced user support requests.",
+    ],
+  },
+  {
     company: "LinkedIn",
     role: "Analytics Engineer - Data Analyst",
     date: "2024 – 2025",
